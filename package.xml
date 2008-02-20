@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package version="2.0" xmlns="http://pear.php.net/dtd/package-2.0" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0 http://pear.php.net/dtd/tasks-1.0.xsd http://pear.php.net/dtd/package-2.0 http://pear.php.net/dtd/package-2.0.xsd">
+ <name>sfOpmlPlugin</name>
+ <channel>pear.symfony-project.com</channel>
+ <summary>OPML documents support in Symfony</summary>
+ <description>This plugin offers an object mapping to OPML documents in Symfony. The plugin has parsing capacities, and can generate valid OPML documents.</description>
+ <lead>
+  <name>Xavier Lacot</name>
+  <user>xavier</user>
+  <email>xavier@lacot.org</email>
+  <active>yes</active>
+ </lead>
+ <date>2008-02-20</date>
+ <time>14:05:01</time>
+ <version>
+  <release>0.8.0</release>
+  <api>0.8.0</api>
+ </version>
+ <stability>
+  <release>beta</release>
+  <api>beta</api>
+ </stability>
+ <license uri="http://www.symfony-project.com/license">MIT license</license>
+ <notes>
+  Initial public release. Complete support of the OPML 1.0 specification. Import/export from/to xml, php array, php objects.
+ </notes>
+ <contents>
+  <dir name="/">
+   <dir name="lib">
+     <file name="sfFeedOpml.class.php" role="data" />
+     <file name="sfFeedOpmlOutline.class.php" role="data" />
+     <file name="sfOpml.class.php" role="data" />
+     <file name="sfOpmlOutline.class.php" role="data" />
+   </dir>
+   <file name="README" role="data" />
+   <file name="LICENSE" role="data" />
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.0.0</min>
+   </php>
+   <pearinstaller>
+    <min>1.4.1</min>
+   </pearinstaller>
+   <package>
+    <name>symfony</name>
+    <channel>pear.symfony-project.com</channel>
+    <min>1.0.0</min>
+    <max>1.1.0</max>
+    <exclude>1.1.0</exclude>
+   </package>
+  </required>
+ </dependencies>
+ <phprelease />
+ <changelog>
+  <release>
+   <version>
+    <release>0.8.0</release>
+    <api>0.8.0</api>
+   </version>
+   <stability>
+    <release>beta</release>
+    <api>beta</api>
+   </stability>
+   <date>2008-02-20</date>
+   <license uri="http://www.symfony-project.com/license">MIT license</license>
+   <notes>Initial public release. Complete support of the OPML 1.0 specification. Import/export from/to xml, php array, php objects.</notes>
+  </release>
+ </changelog>
+</package>

@@ -1,0 +1,84 @@
+= sfOpmlPlugin =
+
+== Introduction ==
+This plugin offers an object mapping to OPML documents in Symfony. The plugin has parsing capacities, and can generate valid OPML documents.
+
+== Features ==
+
+ * parse an OPML document, export it to an array or a structurated object
+ * generate an OPML document from an array or a structurated object
+ * compliant with the [http://www.opml.org/spec OPML 1.0 specification]
+
+== Get it installed ==
+
+ * go to your project's root
+
+ * Install the plugin:
+   {{{
+     ./symfony plugin-install http://plugins.symfony-project.com/sfOpmlPlugin
+   }}}
+
+ * clear the cache:
+   {{{
+     ./symfony cc
+   }}}
+
+
+== Usage ==
+
+=== Parsing an OPML document ===
+Parsing an OPML document can be done using the {{{fromXml()}}} method:
+{{{
+#!php
+<?php
+// parse the OPML file
+$xml = file_get_contents('path/to/your/document.opml');
+$opml = new sfOpml();
+$opml_object = $opml->fromXml($xml);
+
+// get some properties
+echo $opml_object->getTitle();
+
+// transform the object to an array
+$opml_array = $opml_object->toArray()
+echo $opml_array['title'];
+}}}
+
+=== Generating an OPML document ===
+The plugins also permits to generate an OPML document, using the {{{toXml()}}} 
+method:
+
+{{{
+#!php
+<?php
+// create the outline (load it from an array, for instance)
+$opml = array('title'    => 'My OPML document', 
+              'outlines' => array('outline1' => array('title' => 'My first outline', 
+                                                      'text'  => 'The text of the first outline'),
+                                  'outline2' => array('title' => 'My second outline', 
+                                                      'text'  => 'The text of the second outline'),
+                                  'outline3' => array('title' => 'My third outline', 
+                                                      'text'  => 'The text of the third outline', 
+                                                      'outlines' => array('outline31' => array('title' => 'My first sub-outline', 
+                                                                                               'text'  => 'The text of the first outline in the third 1-st level outline')
+                                                                         )
+                                                     )
+                                 )
+             );
+
+$opml_object = new sfOpml();
+$opml_object->fromArray($opml);
+
+// export the outline as xml
+$opml_xml = $opml_object->toXml();
+echo $opml_xml;
+}}}
+
+
+== License and credits ==
+This plugin has been developed by [http://lacot.org/ Xavier Lacot] and is licensed under the MIT license.
+
+== Changelog ==
+
+=== version 0.8 - 2008-02-20 ===
+Initial public release. Complete support of the OPML 1.0 specification. Import/export from/to xml, php array, php objects.
