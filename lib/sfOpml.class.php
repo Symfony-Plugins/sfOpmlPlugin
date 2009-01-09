@@ -58,18 +58,18 @@ class sfOpml
     $this->ownerEmail = isset($opml_array['ownerEmail']) ? $opml_array['ownerEmail'] : null;
     $this->ownerName = isset($opml_array['ownerName']) ? $opml_array['ownerName'] : null;
     $this->title = isset($opml_array['title']) ? $opml_array['title'] : null;
-    $this->vertScrollState = isset($opml_array['title']) ? $opml_array['vertScrollState'] : null;
-    $this->windowBottom = isset($opml_array['title']) ? $opml_array['windowBottom'] : null;
-    $this->windowLeft = isset($opml_array['title']) ? $opml_array['windowLeft'] : null;
-    $this->windowRight = isset($opml_array['title']) ? $opml_array['windowRight'] : null;
-    $this->windowTop = isset($opml_array['title']) ? $opml_array['windowTop'] : null;
+    $this->vertScrollState = isset($opml_array['vertScrollState']) ? $opml_array['vertScrollState'] : null;
+    $this->windowBottom = isset($opml_array['windowBottom']) ? $opml_array['windowBottom'] : null;
+    $this->windowLeft = isset($opml_array['windowLeft']) ? $opml_array['windowLeft'] : null;
+    $this->windowRight = isset($opml_array['windowRight']) ? $opml_array['windowRight'] : null;
+    $this->windowTop = isset($opml_array['windowTop']) ? $opml_array['windowTop'] : null;
     $outlines = array();
 
-    if (isset($outline_array['outlines']))
+    if (isset($opml_array['outlines']))
     {
       $outline_class = $this->outline_class;
 
-      foreach ($outline_array['outlines'] as $outline_array)
+      foreach ($opml_array['outlines'] as $outline_array)
       {
         $outline = new $outline_class();
         $outlines[] = $outline->fromArray($outline_array);
@@ -136,7 +136,7 @@ class sfOpml
 
   public function getEncoding()
   {
-    return $this->encoding;
+    return isset($this->encoding) ? $this->encoding : 'utf8';
   }
 
   public function getExpansionState()
@@ -191,7 +191,7 @@ class sfOpml
 
   protected function initContext()
   {
-    if (!$this->context)
+    if (!isset($this->context))
     {
       $this->context = sfContext::getInstance();
     }
